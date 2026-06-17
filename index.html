@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>阮超 | 个人设定集 · 新媒体策划 Portfolio</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #181a21;
+    --surface2: #1f222b;
+    --border: #2a2d38;
+    --text: #e6e8ed;
+    --text2: #9196a5;
+    --accent: #5b7fff;
+    --accent-soft: rgba(91,127,255,0.10);
+    --accent-glow: rgba(91,127,255,0.18);
+    --gold: #f0b85e;
+    --green: #4ade80;
+    --purple: #a78bfa;
+    --rose: #fb7185;
+    --cyan: #22d3ee;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(15,17,23,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    height: 52px;
+    align-items: center;
+  }
+  nav a {
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+  }
+  nav a:hover { color: var(--accent); }
+  nav .nav-brand {
+    font-weight: 700;
+    color: var(--text);
+    font-size: 15px;
+    letter-spacing: 0;
+    margin-right: auto;
+    position: absolute;
+    left: 24px;
+  }
+
+  /* Section */
+  section { padding: 80px 24px; max-width: 1080px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .section-title {
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 44px;
+    line-height: 1.3;
+  }
+  .section-title em { font-style: normal; color: var(--accent); }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 100px 24px 80px;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(91,127,255,0.05) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 80% 70%, rgba(167,139,250,0.04) 0%, transparent 50%);
+  }
+  .hero-inner { max-width: 1080px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .hero-text .hero-badge {
+    display: inline-block;
+    padding: 5px 14px;
+    background: var(--accent-soft);
+    border: 1px solid rgba(91,127,255,0.25);
+    border-radius: 100px;
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+  }
+  .hero-text h1 {
+    font-size: clamp(42px, 7vw, 64px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+  }
+  .hero-text h1 span { color: var(--accent); }
+  .hero-text .hero-sub {
+    font-size: 17px;
+    color: var(--text2);
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+  .hero-text .hero-meta {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--text2);
+  }
+  .hero-text .hero-meta span {
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+  }
+  .hero-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .hero-card .stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-card .stat-row:last-child { border-bottom: none; }
+  .hero-card .stat-label { font-size: 13px; color: var(--text2); }
+  .hero-card .stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .hero-card .stat-value.big {
+    font-size: 28px;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; }
+  }
+
+  /* About */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+  .about-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+  }
+  .about-block h4 {
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .about-block p, .about-block li {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.7;
+  }
+  .about-block ul {
+    list-style: none;
+    padding: 0;
+  }
+  .about-block ul li {
+    padding: 4px 0 4px 16px;
+    position: relative;
+  }
+  .about-block ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .tag {
+    padding: 4px 12px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 12px;
+    color: var(--text2);
+  }
+  .tag.hl { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Experience Timeline */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 28px;
+    margin-bottom: 36px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--border);
+  }
+  .exp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .exp-meta .exp-date {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+  .exp-meta .exp-org {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+  .exp-meta .exp-role {
+    font-size: 13px;
+    color: var(--text2);
+    margin-top: 2px;
+  }
+  .exp-body h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .exp-body .exp-desc {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.7;
+    margin-bottom: 6px;
+  }
+  .exp-body .exp-desc strong { color: var(--text); font-weight: 500; }
+  @media (max-width: 600px) {
+    .exp-item { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  /* Works */
+  .works-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .work-card {
+    display: flex;
+    flex-direction: row;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .work-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 12px 40px rgba(91,127,255,0.08);
+  }
+  .work-cover-link {
+    flex: 0 0 260px;
+    display: block;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    background: var(--surface2);
+    border-right: 1px solid var(--border);
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .work-pdf-preview {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .work-pdf-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .work-pdf-preview .pdf-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15,17,23,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .work-pdf-preview:hover .pdf-overlay { opacity: 1; }
+  .pdf-overlay span {
+    padding: 8px 20px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .work-body {
+    flex: 1;
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+  }
+  .work-body .work-brand {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .work-body .work-title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .work-body .work-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .work-body .work-type {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.5;
+  }
+  .work-body .work-label {
+    font-size: 11px;
+    padding: 2px 10px;
+    border-radius: 100px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .work-body .work-label.lead {
+    background: rgba(91,127,255,0.12);
+    color: var(--accent);
+  }
+  .work-body .work-label.full {
+    background: rgba(212,175,55,0.12);
+    color: var(--gold);
+  }
+  .work-body .work-strategy {
+    font-size: 13px;
+    color: var(--text3);
+    line-height: 1.7;
+    margin-bottom: 12px;
+    max-width: 560px;
+  }
+  .work-body .work-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .work-body .work-tags .wt {
+    font-size: 11px;
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--text2);
+  }
+  @media (max-width: 860px) {
+    .work-card { flex-direction: column; }
+    .work-cover-link { flex: 0 0 auto; aspect-ratio: 16/9; border-right: none; border-bottom: 1px solid var(--border); }
+    .work-body { padding: 20px; }
+  }
+  @media (max-width: 560px) {
+    .work-body .work-title { font-size: 17px; }
+    .work-body .work-strategy { font-size: 12px; }
+  }
+
+  /* Skills Grid */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 20px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .skill-card:hover {
+    background: var(--surface2);
+    border-color: var(--accent);
+  }
+  .skill-card .skill-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  .skill-card .skill-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .skill-card .skill-desc {
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.5;
+  }
+  @media (max-width: 768px) {
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 460px) {
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Honors */
+  .honors-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    list-style: none;
+  }
+  .honors-list li {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 13px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .honors-list li .honor-level {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 100px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+  .honor-level.national { background: rgba(240,184,94,0.12); color: var(--gold); }
+  .honor-level.province { background: rgba(167,139,250,0.12); color: var(--purple); }
+  .honor-level.school { background: rgba(74,222,128,0.12); color: var(--green); }
+  .honors-list li .honor-text { color: var(--text2); line-height: 1.5; flex: 1; }
+  @media (max-width: 600px) {
+    .honors-list { grid-template-columns: 1fr; }
+  }
+
+  /* Contact */
+  #contact { text-align: center; padding-bottom: 100px; }
+  .contact-inner {
+    max-width: 480px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 40px;
+  }
+  .contact-inner h3 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+  .contact-inner .contact-intent {
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+  }
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    padding: 6px 0;
+    font-size: 14px;
+    color: var(--text2);
+  }
+  .contact-row .ct-icon { font-size: 16px; }
+  .qr-note {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--text2);
+    opacity: 0.7;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 32px 24px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text2);
+    letter-spacing: 2px;
+  }
+
+  /* Fade in animation */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.7s ease-out;
+  }
+  .fade-in.on { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand">RuanChao</span>
+  <a href="#about">关于</a>
+  <a href="#experience">经历</a>
+  <a href="#works">作品</a>
+  <a href="#skills">能力</a>
+  <a href="#honors">荣誉</a>
+  <a href="#contact">联系</a>
+</nav>
+
+<!-- ====== HERO ====== -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">新媒体实习生 · 2027届</div>
+      <h1>阮<span>超</span></h1>
+      <p class="hero-sub">
+        网络与新媒体专业在读，热衷品牌策划与整合营销。<br>
+        相信好创意来自对「人」的洞察，好执行源于对细节的执着。
+      </p>
+      <div class="hero-meta">
+        <span>湖南涉外经济学院</span>
+        <span>湖南 · 长沙</span>
+        <span>GPA 4.23 / 4.5</span>
+      </div>
+    </div>
+    <div class="hero-card fade-in">
+      <div class="stat-row">
+        <span class="stat-label">专业排名</span>
+        <span class="stat-value big">1 / 236</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">国家奖学金</span>
+        <span class="stat-value">2025</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">日语能力</span>
+        <span class="stat-value">N1 证书</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">实习经历</span>
+        <span class="stat-value">2 段</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">策划项目</span>
+        <span class="stat-value">4+ 项</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== ABOUT ====== -->
+<section id="about">
+  <div class="section-label">01 · Profile</div>
+  <div class="section-title">个人<em>简介</em></div>
+  <div class="about-grid">
+    <div class="about-block fade-in">
+      <h4>教育背景</h4>
+      <p style="font-weight:600;color:var(--text);">湖南涉外经济学院</p>
+      <p>网络与新媒体 · 本科 | 2023.09 – 2027.06</p>
+      <p style="margin-top:8px;">GPA：<strong>4.23 / 4.5</strong> | 专业排名：<strong>前 1%（1/236）</strong></p>
+      <p style="margin-top:8px;">主修：传播学、新媒体概论、新闻学、广告学、新媒体营销</p>
+    </div>
+    <div class="about-block fade-in">
+      <h4>自我定位</h4>
+      <ul>
+        <li><strong>用户洞察：</strong>擅长捕捉年轻群体内容偏好，结合热点打造差异化传播</li>
+        <li><strong>创意整合：</strong>打通图文、社群、线下多渠道传播链路，独立完成从构思到落地</li>
+        <li><strong>高效执行：</strong>多线并行任务合理拆分优先级，沟通协调能力突出</li>
+        <li><strong>持续迭代：</strong>主动跟进平台玩法与行业趋势，擅长复盘优化策略</li>
+      </ul>
+      <div class="tag-row" style="margin-top:12px;">
+        <span class="tag hl">品牌策划</span>
+        <span class="tag hl">新媒体运营</span>
+        <span class="tag">活动执行</span>
+        <span class="tag">日语N1</span>
+        <span class="tag">摄影 / 物料</span>
+        <span class="tag">PPT设计</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== EXPERIENCE ====== -->
+<section id="experience">
+  <div class="section-label">02 · Experience</div>
+  <div class="section-title">实习与项目<em>经历</em></div>
+
+  <div class="exp-item fade-in">
+    <div class="exp-meta">
+      <div class="exp-date">2025.06 – 2025.08</div>
+      <div class="exp-org">中广天择传媒</div>
+      <div class="exp-role">项目专员/助理</div>
+    </div>
+    <div class="exp-body">
+      <h4>AI 数据采集配套营销项目</h4>
+      <p class="exp-desc"><strong>项目统筹：</strong>策划 AI 数据采集配套营销活动，拆分项目执行排期，输出落地策划方案，统筹全流程保障项目按期交付。</p>
+      <p class="exp-desc"><strong>内容提质：</strong>依据模型训练需求制定标注审核规范，优化内容质检流程，修正百余条瑕疵数据，提升素材适配度。</p>
+      <p class="exp-desc"><strong>校企拓渠：</strong>对接高校渠道并开展实操培训，统一标准化教学流程，累计培训 80 余名兼职人员。</p>
+      <p class="exp-desc"><strong>素材落地：</strong>累计产出 220+小时有效训练数据，支撑产品营销测试。</p>
+    </div>
+  </div>
+
+  <div class="exp-item fade-in">
+    <div class="exp-meta">
+      <div class="exp-date">2025.04 – 2025.07</div>
+      <div class="exp-org">达利食品 · 乐虎</div>
+      <div class="exp-role">团队负责人</div>
+    </div>
+    <div class="exp-body">
+      <h4>乐虎品牌校园营销实践大赛</h4>
+      <p class="exp-desc">聚焦大学生消费市场，搭建线上线下一体化校园传播链路。完成市场调研、全流程输出校园营销方案，设计配套宣传物料，联动校内社团落地执行。多场活动累计参与 <strong>2000+</strong> 人次，全网话题讨论量 <strong>10w+</strong>，搭建 3 个高活跃学生社群。获全国大学生广告艺术节营销实践赛道<strong>全国入围奖</strong>，入选"创未来"大学生实践人才培育工程。</p>
+    </div>
+  </div>
+
+  <div class="exp-item fade-in">
+    <div class="exp-meta">
+      <div class="exp-date">2024.07 – 2024.09</div>
+      <div class="exp-org">长沙市白马街道</div>
+      <div class="exp-role">企业党建（实习）</div>
+    </div>
+    <div class="exp-body">
+      <h4>街道新媒体运营与党建活动</h4>
+      <p class="exp-desc"><strong>账号运营：</strong>独立运营街道官方新媒体账号，撰写 19 篇图文新闻，3 篇稿件登上红网。</p>
+      <p class="exp-desc"><strong>活动策划：</strong>参与七一、八一大型党建活动全流程策划，两场活动到场人数均超 200 人，推文最高阅读 1200+。</p>
+      <p class="exp-desc"><strong>客群维护：</strong>累计服务对接党员百余人，沉淀本地私域受众。</p>
+    </div>
+  </div>
+
+  <div class="exp-item fade-in">
+    <div class="exp-meta">
+      <div class="exp-date">2024.09 – 2025.06</div>
+      <div class="exp-org">院学生会</div>
+      <div class="exp-role">主席</div>
+    </div>
+    <div class="exp-body">
+      <h4>学生会统筹管理与活动营销</h4>
+      <p class="exp-desc"><strong>统筹管理：</strong>统筹 6 大部门日常工作，制定学期宣传排期，团队宣传执行效率提升 <strong>30%</strong>。</p>
+      <p class="exp-desc"><strong>活动营销：</strong>牵头策划迎新、毕业季等 8 场校园主题活动，覆盖全院 1200 余名学生。</p>
+      <p class="exp-desc"><strong>新媒体运营：</strong>主抓学院官方账号选题与图文制作，单学期产出推文 56 篇，平均阅读 600+。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== WORKS ====== -->
+<section id="works">
+  <div class="section-label">03 · Portfolio</div>
+  <div class="section-title">策划作品<em>集</em></div>
+  <p style="color:var(--text2);font-size:14px;margin-top:-32px;margin-bottom:28px;">
+    以下为课程与实践中的品牌策划作品。点击左侧封面可打开原始 PDF 文件查看完整方案。
+  </p>
+
+  <div class="works-grid">
+
+    <!-- Work: 超能 -->
+    <div class="work-card fade-in">
+      <a href="file:///C:/Users/Administrator/Desktop/香见你·超能香氛洗衣液整合营销策划案.pdf" target="_blank" class="work-cover-link" style="background:linear-gradient(135deg, #141a1e 0%, #101a18 50%, #14181e 100%);">
+        <div class="work-pdf-preview">
+          <img src="cover_香见你.png" alt="" />
+          <div class="pdf-overlay"><span>点击查看 PDF</span></div>
+        </div>
+      </a>
+      <div class="work-body">
+        <div class="work-brand" style="color:var(--purple);">CHAONENG · 超能</div>
+        <div class="work-title">香见你</div>
+        <div class="work-meta">
+          <span class="work-type">超能植愈香氛洗衣液整合营销案</span>
+          <span class="work-label full">全案策划</span>
+        </div>
+        <div class="work-strategy">以"香味"为情感纽带，将洗衣液从功能日用品升级为情感消费品。TVC 叙事讲述香气唤醒记忆的故事，线下"气味快闪店"打造沉浸体验，社交媒体矩阵放大 UGC 口碑传播。</div>
+        <div class="work-tags">
+          <span class="wt">情感营销</span><span class="wt">TVC脚本</span><span class="wt">线下快闪</span><span class="wt">KOL矩阵</span><span class="wt">场景洞察</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Work: 旺旺 -->
+    <div class="work-card fade-in">
+      <a href="file:///C:/Users/Administrator/Desktop/新年愿旺 当然旺旺 (297 x 210 像素).pdf" target="_blank" class="work-cover-link" style="background:linear-gradient(135deg, #1e1814 0%, #1a1814 50%, #1e1a14 100%);">
+        <div class="work-pdf-preview">
+          <img src="cover_新年愿旺.png" alt="" />
+          <div class="pdf-overlay"><span>点击查看 PDF</span></div>
+        </div>
+      </a>
+      <div class="work-body">
+        <div class="work-brand" style="color:var(--gold);">WANT WANT · 旺旺集团</div>
+        <div class="work-title">新年愿旺 当然旺旺</div>
+        <div class="work-meta">
+          <span class="work-type">2027 CNY 春节营销策划案</span>
+          <span class="work-label full">全案策划</span>
+        </div>
+        <div class="work-strategy">深度洞察 Z 世代"情绪年货"需求，将旺旺经典产品重塑为社交货币。创意快闪装置引爆线下打卡，限定礼盒驱动 UGC 话题裂变，实现品牌年轻化破圈与文化共鸣。</div>
+        <div class="work-tags">
+          <span class="wt">Z世代洞察</span><span class="wt">社交货币</span><span class="wt">快闪设计</span><span class="wt">UGC运营</span><span class="wt">创意产品</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Work: 海底捞 -->
+    <div class="work-card fade-in">
+      <a href="file:///C:/Users/Administrator/Desktop/就这样嗨到明年.pdf" target="_blank" class="work-cover-link" style="background:linear-gradient(135deg, #1a1218 0%, #1a1015 50%, #151018 100%);">
+        <div class="work-pdf-preview">
+          <img src="cover_就这样嗨到明年.png" alt="" />
+          <div class="pdf-overlay"><span>点击查看 PDF</span></div>
+        </div>
+      </a>
+      <div class="work-body">
+        <div class="work-brand">HAIDILAO · 海底捞火锅</div>
+        <div class="work-title">就这样嗨到明年</div>
+        <div class="work-meta">
+          <span class="work-type">跨年新媒体整合营销策划</span>
+          <span class="work-label lead">小组作业（组长）</span>
+        </div>
+        <div class="work-strategy">以跨年夜消费场景为锚点，围绕"嗨"文化构建社交话题，通过微博话题引爆 → 抖音达人种草 → 微信 H5 裂变的三段式新媒体矩阵，实现从线上声量到线下门店引流的完整闭环。</div>
+        <div class="work-tags">
+          <span class="wt">市场分析</span><span class="wt">SWOT</span><span class="wt">新媒体矩阵</span><span class="wt">KOL策略</span><span class="wt">H5裂变</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Work: 欧莱雅 x 花少 -->
+    <div class="work-card fade-in">
+      <a href="file:///C:/Users/Administrator/Desktop/花少同心季x欧莱雅小金瓶冠名策划案（ESG方向）.pdf" target="_blank" class="work-cover-link" style="background:linear-gradient(135deg, #1a141e 0%, #1a101c 50%, #15101e 100%);">
+        <div class="work-pdf-preview">
+          <img src="cover_花少同心季.png" alt="" />
+          <div class="pdf-overlay"><span>点击查看 PDF</span></div>
+        </div>
+      </a>
+      <div class="work-body">
+        <div class="work-brand" style="color:#d48c4a;">L'ORÉAL · 欧莱雅 × 芒果TV</div>
+        <div class="work-title">花少同心季 · 无畏发光晒自己</div>
+        <div class="work-meta">
+          <span class="work-type">综艺冠名策划案（ESG方向）</span>
+          <span class="work-label lead">小组作业（组长）</span>
+        </div>
+        <div class="work-strategy">双话题矩阵驱动——内容话题"#花少7被世界看到的故事"绑定综艺 IP 流量，品牌话题"#无畏发光晒自己"传递自信态度。"一带一路"跨文化交流场景自然绑定欧莱雅小金瓶防晒产品。</div>
+        <div class="work-tags">
+          <span class="wt">双话题矩阵</span><span class="wt">综艺冠名</span><span class="wt">ESG营销</span><span class="wt">KOL联动</span><span class="wt">UGC共创</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ====== SKILLS ====== -->
+<section id="skills">
+  <div class="section-label">04 · Capabilities</div>
+  <div class="section-title">能力<em>图谱</em></div>
+  <div class="skills-grid">
+    <div class="skill-card fade-in">
+      <div class="skill-icon">&#x1f4ca;</div>
+      <div class="skill-name">策略分析</div>
+      <div class="skill-desc">行业趋势研判 · SWOT ·<br>消费者洞察 · 竞品分析</div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">&#x1f4dd;</div>
+      <div class="skill-name">全案策划</div>
+      <div class="skill-desc">从市场分析到创意产出<br>独立完成品牌营销全案</div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">&#x1f4e3;</div>
+      <div class="skill-name">新媒体运营</div>
+      <div class="skill-desc">抖音 · 小红书 · 微博<br>账号运营与内容创作</div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">&#x1f3ac;</div>
+      <div class="skill-name">创意内容</div>
+      <div class="skill-desc">TVC脚本 · H5互动<br>UGC话题 · 物料设计</div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">&#x1f465;</div>
+      <div class="skill-name">团队领导</div>
+      <div class="skill-desc">学生会主席经验<br>10人小组统筹协调</div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">&#x1f310;</div>
+      <div class="skill-name">日语能力</div>
+      <div class="skill-desc">日语 N1 证书<br>日系品牌文案翻译校对</div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">&#x1f4f8;</div>
+      <div class="skill-name">视觉与工具</div>
+      <div class="skill-desc">摄影 · PPT美化<br>Word / Excel / Xmind</div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">&#x1f4c8;</div>
+      <div class="skill-name">数据复盘</div>
+      <div class="skill-desc">传播数据追踪分析<br>ROI评估与策略优化</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== HONORS ====== -->
+<section id="honors">
+  <div class="section-label">05 · Honors</div>
+  <div class="section-title">所获<em>荣誉</em></div>
+  <ul class="honors-list">
+    <li class="fade-in"><span class="honor-level national">国家级</span><span class="honor-text">2025 年度国家奖学金</span></li>
+    <li class="fade-in"><span class="honor-level national">国家级</span><span class="honor-text">全国高校日语演讲比赛 全国二等奖</span></li>
+    <li class="fade-in"><span class="honor-level national">国家级</span><span class="honor-text">"永旺杯"全国日语演讲比赛 全国奖励赏 &amp; 公费赴日研学资格</span></li>
+    <li class="fade-in"><span class="honor-level national">国家级</span><span class="honor-text">时报金犊奖国际竞赛营销策划赛道 全国三等奖</span></li>
+    <li class="fade-in"><span class="honor-level national">国家级</span><span class="honor-text">大学生创新创业项目国家级立项（第二负责人）</span></li>
+    <li class="fade-in"><span class="honor-level province">省级</span><span class="honor-text">大学生创新创业项目省级立项（第一负责人）</span></li>
+    <li class="fade-in"><span class="honor-level province">省级</span><span class="honor-text">大学生创新创业项目省级立项（第二负责人）</span></li>
+    <li class="fade-in"><span class="honor-level school">校级</span><span class="honor-text">校一等奖学金 ×2 · 大广赛校一等奖 · 优秀学生干部 · 优秀共青团员 · 学习之星</span></li>
+    <li class="fade-in"><span class="honor-level national">国家级</span><span class="honor-text">乐虎营销实践大赛全国入围奖 · "创未来"人才培育工程入选</span></li>
+    <li class="fade-in"><span class="honor-level school">校级</span><span class="honor-text">未来设计师 / 好创意 / 华灿奖 校二等奖 · 优秀志愿者</span></li>
+  </ul>
+</section>
+
+<!-- ====== CONTACT ====== -->
+<section id="contact">
+  <div class="section-label">06 · Contact</div>
+  <div class="section-title">期待<em>联系</em></div>
+  <div class="contact-inner fade-in">
+    <h3>阮超</h3>
+    <p class="contact-intent">意向岗位：新媒体实习生 &nbsp;|&nbsp; 意向城市：湖南长沙</p>
+    <div class="contact-row"><span class="ct-icon">&#x1f4de;</span> 13973957287</div>
+    <div class="contact-row"><span class="ct-icon">&#x1f4e7;</span> 1327162726@qq.com</div>
+    <div class="contact-row"><span class="ct-icon">&#x1f393;</span> 湖南涉外经济学院 · 网络与新媒体 · 2027届</div>
+    <p class="qr-note">如果你正在寻找一位有洞察力、执行力和学习热情的新媒体实习生，欢迎联系我。</p>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 阮超 · 个人设定集 · 策划作品仅供展示参考
+</footer>
+
+<script>
+(function() {
+  const obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
+  // Immediate for above-fold
+  setTimeout(function() {
+    document.querySelectorAll('.fade-in').forEach(function(el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight) el.classList.add('on');
+    });
+  }, 200);
+})();
+</script>
+
+</body>
+</html>
